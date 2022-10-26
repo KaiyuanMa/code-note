@@ -4,14 +4,6 @@ const { Note } = require("../db");
 const { isLoggedIn, haveAccess } = require("./middleware");
 
 //GET
-router.get("/card/:cardId", isLoggedIn, async (req, res, next) => {
-  try {
-    res.send(await Note.findAll({ where: { cardId: req.params.cardId } }));
-  } catch (ex) {
-    next(ex);
-  }
-});
-
 router.get("/:noteId", isLoggedIn, haveAccess, async (req, res, next) => {
   try {
     res.send(await Note.findByPk(req.params.noteId));

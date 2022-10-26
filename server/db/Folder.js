@@ -1,16 +1,16 @@
 const conn = require("./conn");
 const Sequelize = require("sequelize");
 
-const Note = conn.define("note", {
+const Folder = conn.define("folder", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,
     primaryKey: true,
   },
-  text: {
+  name: {
     type: Sequelize.STRING,
-    allowNull: true,
+    allowNull: false,
   },
 });
 
-module.exports = Note;
+module.exports = Folder;

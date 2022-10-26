@@ -1,4 +1,4 @@
-const { User, Card, Note, Code } = require("../db");
+const { User, Card, Note, Code, Folder } = require("../db");
 
 const isLoggedIn = async (req, res, next) => {
   try {
@@ -11,6 +11,10 @@ const isLoggedIn = async (req, res, next) => {
 
 const haveAccess = async (req, res, next) => {
   try {
+    if (req.params.folderId) {
+      const folder = Folder.findByPk(req.params.folderId);
+      if (folder.userId !== req.user.id) throw "No Access";
+    }
     let card = {};
     if (req.params.codeId) {
       const code = await Card.findByPk(req.params.codeId);

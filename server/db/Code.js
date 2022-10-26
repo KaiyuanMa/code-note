@@ -1,7 +1,7 @@
 const conn = require("./conn");
 const Sequelize = require("sequelize");
 
-const Code = conn.define("card", {
+const Code = conn.define("code", {
   id: {
     type: Sequelize.UUID,
     defaultValue: Sequelize.UUIDV4,

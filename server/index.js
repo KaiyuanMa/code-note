@@ -9,6 +9,7 @@ app.use("/public", express.static("public"));
 app.use("/api/session", require("./routes/session"));
 app.use("/api/card", require("./routes/card"));
 app.use("/api/code", require("./routes/code"));
+app.use("/api/folder", require("./routes/folder"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
